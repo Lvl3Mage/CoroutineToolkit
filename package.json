@@ -1,0 +1,19 @@
+﻿{
+  "name": "com.lvl3mage.com.lvl3mage.coroutine-toolkit",
+  "version": "1.0.0",
+  "displayName": "Coroutine Toolkit",
+  "description": "A package that provides a set of utility functions for working with coroutines in Unity",
+  "unity": "2021.3",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lvl3mage/CoroutineToolkit.git"
+  },
+  "keywords": [
+  ],
+  "author": "lvl3mage",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lvl3mage/CoroutineToolkit/issues"
+  },
+  "homepage": "https://github.com/lvl3mage/CoroutineToolkit#readme"
+}

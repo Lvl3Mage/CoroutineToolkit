@@ -1,5 +1,5 @@
 ﻿{
-  "name": "com.lvl3mage.com.lvl3mage.coroutine-toolkit",
+  "name": "com.lvl3mage.coroutine-toolkit",
   "version": "1.0.0",
   "displayName": "Coroutine Toolkit",
   "description": "A package that provides a set of utility functions for working with coroutines in Unity",

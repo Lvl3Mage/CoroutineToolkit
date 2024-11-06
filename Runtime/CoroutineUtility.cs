@@ -11,7 +11,7 @@ namespace Lvl3Mage.CoroutineToolkit
 		{
 			bool interrupted = false;
 			Coroutine interruptCoroutine = CoroutineRunner.StartCoroutine(EnumeratorCallback(interrupter, () => interrupted = true));
-			yield return WaitForAll(new[]{
+			yield return WaitForAny(new[]{
 				enumerator,
 				new WaitUntil(() => interrupted)
 			});
@@ -28,7 +28,7 @@ namespace Lvl3Mage.CoroutineToolkit
 		{
 			bool interrupted = false;
 			Coroutine interruptCoroutine = CoroutineRunner.StartCoroutine(EnumeratorCallback(interrupter, () => interrupted = true));
-			yield return WaitForAll(new[]{
+			yield return WaitForAny(new[]{
 				enumerator,
 				new WaitUntil(() => interrupted)
 			});
@@ -43,7 +43,7 @@ namespace Lvl3Mage.CoroutineToolkit
 		{
 			bool interrupted = false;
 			Coroutine interruptCoroutine = CoroutineRunner.StartCoroutine(EnumeratorCallback(interrupter, () => interrupted = true));
-			yield return WaitForAll(new[]{
+			yield return WaitForAny(new[]{
 				enumerator,
 				new WaitUntil(() => interrupted)
 			});
@@ -51,7 +51,7 @@ namespace Lvl3Mage.CoroutineToolkit
 				CoroutineRunner.StopCoroutine(interruptCoroutine);
 			}
 		}
-		public static IEnumerator WaitForOne(IEnumerator[] enumerators)
+		public static IEnumerator WaitForAny(IEnumerator[] enumerators)
 		{
 			Coroutine[] coroutines = new Coroutine[enumerators.Length];
 			bool done = false;

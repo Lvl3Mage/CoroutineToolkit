@@ -7,7 +7,7 @@ namespace Lvl3Mage.CoroutineToolkit
 	public class CoroutineUtility
 	{
 		public static IEnumerator WaitWithInterrupt(IEnumerator enumerator, IEnumerator interrupter,
-			IEnumerator onInterrupt = null)
+			Func<IEnumerator> onInterrupt)
 		{
 			bool interrupted = false;
 			Coroutine interruptCoroutine = CoroutineRunner.StartCoroutine(EnumeratorCallback(interrupter, () => interrupted = true));
@@ -15,16 +15,16 @@ namespace Lvl3Mage.CoroutineToolkit
 				enumerator,
 				new WaitUntil(() => interrupted)
 			});
-			if (interrupted && onInterrupt != null)
+			if (interrupted)
 			{
-				yield return onInterrupt;
+				yield return onInterrupt?.Invoke();
 			}
 			if(interruptCoroutine != null){
 				CoroutineRunner.StopCoroutine(interruptCoroutine);
 			}
 		}
 		public static IEnumerator WaitWithInterrupt(IEnumerator enumerator, IEnumerator interrupter,
-			Action onInterrupt = null)
+			Action onInterrupt)
 		{
 			bool interrupted = false;
 			Coroutine interruptCoroutine = CoroutineRunner.StartCoroutine(EnumeratorCallback(interrupter, () => interrupted = true));
@@ -35,6 +35,18 @@ namespace Lvl3Mage.CoroutineToolkit
 			if (interrupted){
 				onInterrupt?.Invoke();
 			}
+			if(interruptCoroutine != null){
+				CoroutineRunner.StopCoroutine(interruptCoroutine);
+			}
+		}
+		public static IEnumerator WaitWithInterrupt(IEnumerator enumerator, IEnumerator interrupter)
+		{
+			bool interrupted = false;
+			Coroutine interruptCoroutine = CoroutineRunner.StartCoroutine(EnumeratorCallback(interrupter, () => interrupted = true));
+			yield return WaitForAll(new[]{
+				enumerator,
+				new WaitUntil(() => interrupted)
+			});
 			if(interruptCoroutine != null){
 				CoroutineRunner.StopCoroutine(interruptCoroutine);
 			}

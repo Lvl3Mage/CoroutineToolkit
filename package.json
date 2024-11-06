@@ -1,6 +1,6 @@
 ﻿{
   "name": "com.lvl3mage.coroutine-toolkit",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "displayName": "Coroutine Toolkit",
   "description": "A package that provides a set of utility functions for working with coroutines in Unity",
   "unity": "2021.3",
